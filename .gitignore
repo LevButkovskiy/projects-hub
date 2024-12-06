@@ -1,1 +1,8 @@
+#node
 node_modules/
+
+#postgres
+pgdata/
+
+#environment
+.env

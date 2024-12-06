@@ -1,0 +1,25 @@
+services:
+    postgres:
+        image: postgres:17.2
+        container_name: postgres
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        volumes:
+            - ./pgdata:/var/lib/postgresql/data
+        ports:
+            - ${POSTGRES_PORT}:5432
+    arduino:
+        container_name: arduino
+        build:
+            context: ./packages/arduino
+            dockerfile: Dockerfile
+        ports:
+            - ${PACKAGE_ARDUINO_HOST}:3000
+    alise:
+        container_name: alise
+        build:
+            context: ./packages/alise
+            dockerfile: Dockerfile
+        ports:
+            - ${PACKAGE_ALISE_HOST}:3000
