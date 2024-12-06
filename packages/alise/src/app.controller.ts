@@ -1,5 +1,6 @@
 import { Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import { TAliceDialogBody } from './types/dialog.type';
 
 @Controller('alise')
 export class AppController {
@@ -11,8 +12,8 @@ export class AppController {
 	}
 
 	@Post('webhook')
-	postWebhook(body) {
+	postWebhook(body: TAliceDialogBody) {
 		console.log(body);
-		return this.appService.postWebhook();
+		return this.appService.postWebhook(body);
 	}
 }
